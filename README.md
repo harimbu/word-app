@@ -4,11 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## 1. html, css
 
-In the project directory, you can run:
+ui
 
 ### 2. react-router-dom
 
-npm i react-router-dom  
 페이지 라우팅
 
 ### 3. dummy data
@@ -17,7 +16,7 @@ josn 더미 데이타를 만들어서 적용
 
 ### 4. dummy data
 
-날짜 링크
+날짜별 링크
 
 ```
 <Link to={`/word-list/${day.day}`} key={day.id}>
@@ -25,7 +24,7 @@ josn 더미 데이타를 만들어서 적용
 </Link>
 ```
 
-useParams 로 받기
+useParams 로 날짜 받기
 
 ```
 <Route path="/word-list/:day" element={<WordList />} />
@@ -63,3 +62,17 @@ export default function useFetch(url) {
   return data
 }
 ```
+
+### 7. 단어추가, 날짜추가
+
+fetch POST  
+useRef  
+useNavigate
+
+단어 추가
+
+### 9. 단어 삭제, 업데이트
+
+fetch PUT  
+fetch DELETE  
+단어 삭제 후 화면 리렌더링
