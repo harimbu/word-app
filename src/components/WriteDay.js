@@ -1,24 +1,17 @@
 import { useNavigate } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import { db } from '../firebase'
+import { collection, addDoc } from 'firebase/firestore'
+import useDay from '../hooks/useDay'
 
 export default function WriteDay() {
-  const days = useFetch('http://localhost:3001/days')
+  const days = useDay()
   const navigate = useNavigate()
 
-  function addDay() {
-    fetch('http://localhost:3001/days', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        day: days.length + 1,
-      }),
-    }).then(res => {
-      if (res.ok) {
-        navigate(`/`)
-      }
+  async function addDay() {
+    await addDoc(collection(db, 'days'), {
+      day: days.length + 1,
     })
+    navigate(`/`)
   }
 
   return (

@@ -1,34 +1,28 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import useDay from '../hooks/useDay'
+import { db } from '../firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default function WriteWord() {
   const navigate = useNavigate()
-  const days = useFetch('http://localhost:3001/days')
+  const days = useDay()
   const engRef = useRef()
   const korRef = useRef()
   const dayRef = useRef()
 
-  function write(e) {
+  async function write(e) {
     e.preventDefault()
 
-    fetch('http://localhost:3001/words', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        eng: engRef.current.value,
-        kor: korRef.current.value,
-        day: dayRef.current.value,
-        isDone: false,
-        isShow: false,
-      }),
-    }).then(res => {
-      if (res.ok) {
-        navigate(`/word-list/${dayRef.current.value}`)
-      }
+    await addDoc(collection(db, 'words'), {
+      eng: engRef.current.value,
+      kor: korRef.current.value,
+      day: Number(dayRef.current.value),
+      isDone: false,
+      isShow: true,
+      date: serverTimestamp(),
     })
+    navigate(`/word-list/${dayRef.current.value}`)
   }
 
   return (

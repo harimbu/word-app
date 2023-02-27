@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import useFetch from '../hooks/useFetch'
+import useDay from '../hooks/useDay'
 
 export default function Days() {
-  const days = useFetch('http://localhost:3001/days')
+  const days = useDay()
 
   return (
     <div className="days">

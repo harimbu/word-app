@@ -6,60 +6,31 @@ import {
   MdOutlineVisibilityOff,
   MdDelete,
 } from 'react-icons/md'
+import { db } from '../firebase'
+import { doc, deleteDoc, updateDoc } from 'firebase/firestore'
 
 export default function Word({ word }) {
   const [isShow, setIsShow] = useState(word.isShow)
   const [isDone, setIsDone] = useState(word.isDone)
-  const [screen, setScreen] = useState(false)
 
-  function toggleShow() {
-    fetch(`http://localhost:3001/words/${word.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...word,
-        isShow: !isShow,
-      }),
-    }).then(res => {
-      if (res.ok) {
-        setIsShow(!isShow)
-      }
+  const docRef = doc(db, 'words', word.id)
+
+  async function toggleShow() {
+    await updateDoc(docRef, {
+      isShow: !isShow,
     })
+    setIsShow(!isShow)
   }
 
-  function toggleDone() {
-    fetch(`http://localhost:3001/words/${word.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...word,
-        isDone: !isDone,
-      }),
-    }).then(res => {
-      if (res.ok) {
-        setIsDone(!isDone)
-      }
+  async function toggleDone() {
+    await updateDoc(docRef, {
+      isDone: !isDone,
     })
+    setIsDone(!isDone)
   }
 
-  function del() {
-    if (window.confirm('정말 삭제하시겠습니까?')) {
-      fetch(`http://localhost:3001/words/${word.id}`, {
-        method: 'DELETE',
-      }).then(res => {
-        if (res.ok) {
-          setScreen(true)
-        }
-      })
-    }
-  }
-
-  if (screen) {
-    return null
+  async function del() {
+    await deleteDoc(doc(db, 'words', word.id))
   }
 
   return (
