@@ -11,6 +11,6 @@ export default function Days() {
           {day.day} 일
         </Link>
       ))}
-    </div>y
+    </div>
   )
 }
