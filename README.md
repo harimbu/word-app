@@ -40,7 +40,7 @@ const words = db.words.filter(word => word.day === Number(d))
 
 ### 5. 3001에 json server 실행
 
-josn 더미 데이타를 만들어서 적용
+json 더미 데이타를 만들어서 적용
 
 ```
 json-server --watch ./src/db/data.json --port 3001
