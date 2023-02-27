@@ -14,7 +14,7 @@ ui
 
 josn 더미 데이타를 만들어서 적용
 
-### 4. dummy data
+### 4. 페이지 링크
 
 날짜별 링크
 
@@ -37,9 +37,7 @@ const d = useParams().day
 const words = db.words.filter(word => word.day === Number(d))
 ```
 
-### 5. 3001에 json server 실행
-
-json 더미 데이타를 만들어서 적용
+### 5. json server 실행
 
 ```
 json-server --watch ./src/db/data.json --port 3001
