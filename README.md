@@ -1,6 +1,6 @@
 # react 단어암기장
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+json-server
 
 ## 1. html, css
 
