@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# react 단어암기장
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 1. html, css
 
 In the project directory, you can run:
 
-### `npm start`
+### 2. react-router-dom
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm i react-router-dom  
+페이지 라우팅
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. dummy data
 
-### `npm test`
+josn 더미 데이타를 만들어서 적용
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. dummy data
 
-### `npm run build`
+날짜 링크
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+<Link to={`/word-list/${day.day}`} key={day.id}>
+  {day.day} 일
+</Link>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+useParams 로 받기
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+<Route path="/word-list/:day" element={<WordList />} />
+```
 
-### `npm run eject`
+날짜별 데이타 출력
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+const d = useParams().day
+const words = db.words.filter(word => word.day === Number(d))
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 5. 3001에 json server 실행
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+josn 더미 데이타를 만들어서 적용
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+json-server --watch ./src/db/data.json --port 3001
+```
 
-## Learn More
+### 6. custom hoook
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+useFetct
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+export default function useFetch(url) {
+  const [data, setData] = useState([])
 
-### Code Splitting
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(item => setData(item))
+  }, [url])
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return data
+}
+```

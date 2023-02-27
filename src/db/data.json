@@ -1,0 +1,98 @@
+{
+  "days": [
+    {
+      "id": 1,
+      "day": 1
+    },
+    {
+      "id": 2,
+      "day": 2
+    },
+    {
+      "id": 3,
+      "day": 3
+    },
+    {
+      "day": 4,
+      "id": 4
+    },
+    {
+      "day": 5,
+      "id": 5
+    }
+  ],
+  "words": [
+    {
+      "id": 2,
+      "day": 1,
+      "eng": "banana",
+      "kor": "바나나",
+      "isDone": false,
+      "isShow": true
+    },
+    {
+      "id": 3,
+      "day": 2,
+      "eng": "water",
+      "kor": "물",
+      "isDone": false,
+      "isShow": true
+    },
+    {
+      "id": 4,
+      "day": 2,
+      "eng": "coffee",
+      "kor": "커피",
+      "isDone": false,
+      "isShow": true
+    },
+    {
+      "id": 5,
+      "day": 3,
+      "eng": "chicken",
+      "kor": "닭",
+      "isDone": false,
+      "isShow": false
+    },
+    {
+      "id": 6,
+      "day": 3,
+      "eng": "bear",
+      "kor": "맥주",
+      "isDone": true,
+      "isShow": true
+    },
+    {
+      "eng": "time",
+      "kor": "시간",
+      "day": "1",
+      "isDone": true,
+      "isShow": false,
+      "id": 12
+    },
+    {
+      "eng": "dust",
+      "kor": "먼지",
+      "day": "2",
+      "isDone": false,
+      "isShow": true,
+      "id": 13
+    },
+    {
+      "eng": "next",
+      "kor": "다음",
+      "day": "4",
+      "isDone": false,
+      "isShow": true,
+      "id": 14
+    },
+    {
+      "eng": "door",
+      "kor": "문",
+      "day": "5",
+      "isDone": false,
+      "isShow": true,
+      "id": 15
+    }
+  ]
+}
