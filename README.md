@@ -74,3 +74,7 @@ useNavigate
 fetch PUT  
 fetch DELETE  
 단어 삭제 후 화면 리렌더링
+
+### 10. firebase firestore
+
+https://yarn-word.web.app/
