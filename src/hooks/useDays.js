@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore'
 
-export default function useDay() {
+export default function useDays() {
   const [days, setDays] = useState([])
 
   useEffect(() => {

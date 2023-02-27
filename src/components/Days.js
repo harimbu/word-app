@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import useDay from '../hooks/useDay'
+import useDays from '../hooks/useDays'
 
 export default function Days() {
-  const days = useDay()
+  const days = useDays()
 
   return (
     <div className="days">

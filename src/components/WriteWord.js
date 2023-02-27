@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useDay from '../hooks/useDay'
+import useDays from '../hooks/useDays'
 import { db } from '../firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default function WriteWord() {
   const navigate = useNavigate()
-  const days = useDay()
+  const days = useDays()
   const engRef = useRef()
   const korRef = useRef()
   const dayRef = useRef()

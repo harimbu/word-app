@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { db } from '../firebase'
 import { collection, addDoc } from 'firebase/firestore'
-import useDay from '../hooks/useDay'
+import useDays from '../hooks/useDays'
 
 export default function WriteDay() {
-  const days = useDay()
+  const days = useDays()
   const navigate = useNavigate()
 
   async function addDay() {
